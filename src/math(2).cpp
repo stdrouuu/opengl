@@ -37,27 +37,27 @@ void drawScene(void)
     int i;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPolygonMode(GL_FRONT, GL_FILL);
-
-    // 1. Annulus Kiri Atas (Teks: "Overwritten")
-    glColor3f(1.0, 0.0, 0.0);
+    
+    //annulus kiri
+    glColor3f(1.0, 1.0, 0.5); // warna kuning pastel
     drawDisc(20.0, 25.0, 75.0, 0.0);
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(1.0, 1.0, 1.0); 
     drawDisc(10.0, 25.0, 75.0, 0.0);
     
-    // 2. Annulus Kanan Atas (Teks: "Floating")
+    //annulus kanan 
     glEnable(GL_DEPTH_TEST);
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.5, 1.0); // warna pink
     drawDisc(20.0, 75.0, 75.0, 0.0);
     glColor3f(1.0, 1.0, 1.0);
     drawDisc(10.0, 75.0, 75.0, 0.5);
     glDisable(GL_DEPTH_TEST);
 
-    // 3. Annulus Bawah (Teks: "The Real Deal")
+    //annulus bawah 
     if(isWire)
         glPolygonMode(GL_FRONT, GL_LINE);
     else 
         glPolygonMode(GL_FRONT, GL_FILL);
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(0.0, 1.0, 1.0); // warna biru muda
     glBegin(GL_TRIANGLE_STRIP);
     for(i = 0; i <= N; ++i)
     {
@@ -67,15 +67,16 @@ void drawScene(void)
     }
     glEnd();
 
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0); 
     glRasterPos3f(15.0, 51.0, 0.0);
     writeBitmapString((void*)font, "Overwritten");
     glRasterPos3f(69.0, 51.0, 0.0);
-    writeBitmapString((void*)font, "Floating");
+    writeBitmapString((void*)font, "Floating (Magenta/Cyan)");
     glRasterPos3f(38.0, 6.0, 0.0);
-    writeBitmapString((void*)font, "The Real Deal");
+    writeBitmapString((void*)font, "The Real Deal (Green)");
     glFlush();
 }
+
 
 void keyInput(unsigned char key, int x, int y)
 {
