@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-I${workspaceFolder}", 
+        "-I${workspaceFolder}/src",
+        "-IC:/MinGW/include",
+        "-LC:/MinGW/lib",
+        "${file}",
+        "-o",
+        "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
+        "-lfreeglut",
+        "-lopengl32",
+        "-lglu32"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
