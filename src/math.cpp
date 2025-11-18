@@ -9,10 +9,10 @@
 static int isWire = 0;
 static long font = (long)GLUT_BITMAP_8_BY_13;
 
-void writeBitString(void* font, char* string)
+void writeBitmapString(void* font, const char* string)
 {
-    char* c;
-    for(c =  string; *c != '\0'; c++)
+    const char* c;
+    for(c = string; *c != '\0'; c++)
         glutBitmapCharacter(font, *c);
 }
 
@@ -65,11 +65,11 @@ void drawScene(void)
 
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos3f(15.0, 51.0, 0.0);
-    writeBitString((void*)font, "Overwritten");
+    writeBitmapString((void*)font, "Overwritten");
     glRasterPos3f(69.0, 51.0, 0.0);
-    writeBitString((void*)font, "Floating");
+    writeBitmapString((void*)font, "Floating");
     glRasterPos3f(38.0, 6.0, 0.0);
-    writeBitString((void*)font, "The Real Deal");
+    writeBitmapString((void*)font, "The Real Deal");
     glFlush();
 }
 
@@ -108,18 +108,6 @@ void resize(int w, int h)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-}
-
-void keyInput(unsigned char key, int x, int y)
-{
-    switch(key)
-    {
-        case 27:
-            exit(0);
-            break;
-        default:
-            break;
-    }
 }
 
 void printInteraction(void)
