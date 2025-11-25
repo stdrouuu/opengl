@@ -71,9 +71,9 @@ void drawScene(void)
     glRasterPos3f(15.0, 51.0, 0.0);
     writeBitmapString((void*)font, "Overwritten");
     glRasterPos3f(69.0, 51.0, 0.0);
-    writeBitmapString((void*)font, "Floating (Magenta/Cyan)");
+    writeBitmapString((void*)font, "Floating");
     glRasterPos3f(38.0, 6.0, 0.0);
-    writeBitmapString((void*)font, "The Real Deal (Green)");
+    writeBitmapString((void*)font, "The Real Deal");
     glFlush();
 }
 
