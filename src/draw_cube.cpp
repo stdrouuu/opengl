@@ -13,6 +13,29 @@ float animateStep = 3.0f;
 const double Xmin = 0.0, Xmax = 3.0;
 const double Ymin = 0.0, Ymax = 3.0;
 
+void specialInput(int key, int x, int y);
+void drawScene(void);
+void keyInput(unsigned char key, int x, int y);
+void resize(int w, int h);
+
+void specialInput(int key, int x, int y)
+{
+    switch(key)
+    {
+    case GLUT_KEY_UP:
+        if(animateStep < 1.0e3) animateStep *= sqrt(2.0);
+        break;
+    case GLUT_KEY_DOWN:
+        if(animateStep > 1.0e-6) animateStep /= sqrt(2.0);
+        break;
+    case 27:
+        exit(0);
+        break;
+    default:
+        break;
+    }
+}
+
 void drawScene(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -21,7 +44,7 @@ void drawScene(void)
     gluLookAt(1.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     glScalef(1.0, 2.0, 1.0);
     glutWireCube(1.0);
-    glutWireTeacup(5.0);
+    // glutWireTeacup(5.0);
     glutWireTeaspoon(5.0);
     glFlush();
 }
@@ -52,24 +75,6 @@ void resize(int w, int h)
     glLoadIdentity();
     glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
     glMatrixMode(GL_MODELVIEW);
-}
-
-void specialInput(int key, int x, int y)
-{
-    switch(key)
-    {
-    case GLUT_KEY_UP:
-        if(animateStep < 1.0e3) animateStep *= sqrt(2.0);
-        break;
-    case GLUT_KEY_DOWN:
-        if(animateStep > 1.0e-6) animateStep /= sqrt(2.0);
-        break;
-    case 27:
-        exit(0);
-        break;
-    default:
-        break;
-    }
 }
 
 int main(int argc, char** argv) {
